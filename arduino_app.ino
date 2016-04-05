@@ -23,15 +23,13 @@ void loop() {
     b.send(dato); 
 
   }
-  // Verificar si hay datos disponibles en el puerto serial SOFTWARE (provenientes del modulo bluetooth)
-  if (b.available() )
-  {
-     // verifica si lo que recibe no es un null
-     char recieve = b.receive();
-     
-     if(recieve != NULL) {
-        //escribe en pantalla
-        Serial.write(recieve);
-     }   
-  }
+
+  //respuesta cuando devuelve un dato 
+  b.receive(readCallback); 
+  
 } 
+
+char readCallback (char data) {
+  Serial.write(data);
+}
+

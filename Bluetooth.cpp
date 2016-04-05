@@ -27,12 +27,12 @@ bool Bluetooth::available() {
 /**
 *  receive
 **/
-char Bluetooth::receive() {
+void Bluetooth::receive(char (*callback)(char)) {
   char dato;
   if (btserial->available() )
   {
     dato = btserial->read();
+    callback(dato);
   }
 
-  return dato;
 }

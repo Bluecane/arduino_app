@@ -13,7 +13,7 @@ class Bluetooth
   public:
     Bluetooth(int pinTX = 10, int pinRX = 11, int vel = 9600);
     char send(char msg);
-    char receive();
+    void receive(char (*callback)(char));
     bool available();
   private:
     SoftwareSerial *btserial;
